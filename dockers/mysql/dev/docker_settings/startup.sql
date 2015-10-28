@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `site`;
+GRANT ALL PRIVILEGES ON `site`.* TO 'admin'@'%';
+
+CREATE DATABASE IF NOT EXISTS `site_test`;
+GRANT ALL PRIVILEGES ON `site_test`.* TO 'admin'@'%';

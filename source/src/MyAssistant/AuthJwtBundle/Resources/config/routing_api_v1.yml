@@ -1,0 +1,28 @@
+app_auth_jwt_getToken:
+    path: /get_token
+    methods: [POST]
+    defaults: { _controller: MyAssistantAuthJwtBundle:Security:getToken, _format: json }
+    requirements:
+      _format:  json
+
+app_auth_jwt_confirm_registration:
+    path: /email/{email}/confirm/{code}
+    methods: [DELETE]
+    defaults: { _controller: MyAssistantAuthJwtBundle:Security:confirmRegistration, _format: json }
+    requirements:
+          _format:  json
+
+app_auth_jwt_resend_confirmation_code:
+    path: /email/{email}/resend_confirmation_code
+    methods: [PUT]
+    defaults: { _controller: MyAssistantAuthJwtBundle:Security:resendConfirmationCode, _format: json }
+    requirements:
+          _format:  json
+
+app_auth_jwt_api_v1_users:
+    type: rest
+    defaults: { _format: json }
+    resource: "MyAssistant\AuthJwtBundle\Controller\\UserController"
+    requirements:
+          _format:  json
+

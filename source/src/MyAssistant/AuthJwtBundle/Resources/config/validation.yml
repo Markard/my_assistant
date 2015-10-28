@@ -1,0 +1,19 @@
+MyAssistant\AuthJwtBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            - email
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            - username
+    getters:
+        username:
+            - NotBlank: ~
+            - Length:
+                max: 255
+        email:
+            - NotBlank: ~
+            - Email: ~
+            - Length:
+                max: 255
+        password:
+            - NotBlank: { groups: [registration] }
+            - Length: { min: 5, groups: [registration] }

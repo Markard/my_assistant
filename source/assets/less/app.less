@@ -1,0 +1,278 @@
+@import "modules/variables.less";
+@import "modules/margin";
+@import "modules/padding";
+@import "modules/alert.less";
+@import "modules/form.less";
+@import "modules/buttons.less";
+@import "modules/navbar.less";
+@import "states/budget.less";
+
+// Global Styles
+
+body {
+  background-color: @gray-lightest;
+  font-size: 16px;
+}
+
+.center {
+  text-align: center;
+}
+
+//Growl
+
+div.growl-container.top-right {
+  top: 60px !important;
+}
+
+// Data table like content
+
+div.data-titles, div.data-content {
+  @media (max-width: 768px) {
+    div.large-only {
+      display: none;
+    }
+  }
+}
+
+div.data-titles div {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bold;
+
+  .center {
+    text-align: center;
+  }
+}
+
+div.data-titles div.total-column {
+  cursor: pointer;
+  font-weight: bolder;
+  width: 30px;
+  height: 30px;
+  z-index: 2;
+  border: 1px solid @blue-light;
+  border-radius: 4px;
+  text-align: center;
+  padding: 1px;
+}
+
+div.data-titles div.total-column.closed:before {
+  content: '+';
+  display: block;
+}
+
+div.data-titles div.total-column.opened:before {
+  content: '-';
+}
+
+div.data-titles div.total-column:hover {
+  -webkit-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.75);
+}
+
+div.data-titles div.total-column:active {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+div.data-content div.data-row-content:hover {
+  background-color: @blue-light !important;
+}
+
+div.data-content div.data-row-content:last-child {
+  border-bottom: 2px solid @gray-lighter;
+}
+
+div.data-content div.data-row-content:nth-child(odd) {
+  background-color: @gray-lighter;
+
+  div {
+    border-left: 2px solid #ffffff;
+  }
+}
+
+div.data-content div.data-row-content:nth-child(even) {
+  border-top: 2px solid @gray-lighter;
+  border-right: 2px solid @gray-lighter;
+}
+
+div.data-content i > div {
+  border-top-left-radius: 8px;
+  border: 1px solid @blue-light;
+  cursor: pointer;
+}
+
+div.data-content i > div:hover {
+  background-color: lighten(@blue-light, 50%);
+}
+
+div.data-content i.closed > div:before {
+  content: '+';
+  position: absolute;
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+div.data-content i.opened > div:before {
+  content: '-';
+  position: absolute;
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+div.data-content div.data-row-content {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border-left: 2px solid @gray-lighter;
+
+  div {
+    border-left: 2px solid @gray-lighter;
+  }
+
+  div:first-child {
+    border-left: none;
+  }
+
+  div.money-cell {
+    text-align: right;
+  }
+
+}
+
+div.data-content div.data-row-content.closed {
+  display: none;
+}
+
+div.data-titles div.total-column {
+  position: absolute;
+  font-size: 20px;
+  top: 9px;
+}
+
+// Page
+
+.page-title {
+  font-size: 24px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid darken(@gray-lighter, 5%);
+  margin-left: 15px;
+}
+
+.page-content {
+  margin-top: 20px;
+}
+
+.page-manage-area {
+  margin-left: 15px;
+  margin-top: 15px;
+  text-align: right;
+}
+
+//Modal
+
+.modal-body {
+  .row {
+    padding: 0 20px;
+  }
+}
+
+// Buttons
+
+a {
+  cursor: pointer;
+}
+
+.btn-outline {
+  color: inherit;
+  background-color: transparent;
+  transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+  color: @brand-primary;
+}
+
+.btn-success.btn-outline {
+  color: @brand-success;
+}
+
+.btn-info.btn-outline {
+  color: @brand-info;
+}
+
+.btn-warning.btn-outline {
+  color: @brand-warning;
+}
+
+.btn-danger.btn-outline {
+  color: @brand-danger;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+  color: white;
+}
+
+.datepicker-form input {
+  padding-left: 10px;
+  background-color: #ffffff !important;
+  cursor: pointer !important;
+}
+
+// Statistic
+
+div.statistic {
+  div.title {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  div.expense {
+    padding-left: 40px;
+    padding-top: 50px;
+
+    div.content:not(:first-child) {
+      margin-top: 10px;
+    }
+
+    div.content {
+      span.statistic-label {
+        font-weight: bold;
+        color: red;
+      }
+    }
+  }
+}
+
+// Other
+
+.block-element {
+  display: block;
+  margin-top: 10px;
+}
+
+.nopadding {
+  padding: 0 !important;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+.message-box {
+  border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  margin-bottom: 10px;
+}

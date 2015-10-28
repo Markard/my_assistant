@@ -1,0 +1,55 @@
+<div class="row mt-30">
+    <div class="col-lg-3 col-xs-12 col-centered">
+        <h3 class="text-center">{{ 'REGISTRATION' | translate }}:</h3>
+
+        <form class="form-horizontal">
+            <div ma-bootstrap-validation ng-model="form.fields.username" class="form-group">
+                <label for="input-username" class="sr-only control-label">
+                    {{ 'USERNAME' | translate }}
+                </label>
+
+                <input type="text" id="input-username" class="form-control" name="username"
+                       placeholder="{{ 'USERNAME' | translate }}" tabindex="1"
+                       ng-model="form.fields.username.value">
+            </div>
+            <div ma-bootstrap-validation ng-model="form.fields.email" class="form-group">
+                <label for="input-email" class="sr-only control-label">
+                    {{ 'EMAIL' | translate }}
+                </label>
+
+                <input type="text" id="input-email" class="form-control" name="email"
+                       placeholder="{{ 'EMAIL' | translate }}" tabindex="1"
+                       ng-model="form.fields.email.value">
+            </div>
+            <div ma-bootstrap-validation ng-model="form.fields.password" class="form-group">
+                <label for="input-password" class="sr-only control-label">
+                    {{ 'PASSWORD' | translate }}
+                </label>
+
+                <input type="password" id="input-password" class="form-control" name="password"
+                       placeholder="{{ 'PASSWORD' | translate }}" tabindex="2"
+                       ng-model="form.fields.password.value.first">
+            </div>
+            <div class="form-group">
+                <label for="input-password_confirmation" class="sr-only control-label">
+                    {{ 'PASSWORD_CONFIRMATION' | translate }}
+                </label>
+
+                <input type="password" id="input-password_confirmation" class="form-control"
+                       name="password_confirmation" placeholder="{{ 'PASSWORD_CONFIRMATION' | translate }}"
+                       tabindex="3" ng-model="form.fields.password.value.second">
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-bg btn-primary" type="submit" ng-click="register()"
+                        tabindex="4">
+                    {{ 'REGISTER' | translate }}
+                </button>
+
+                <hr/>
+
+                <a ui-sref="login" class="text-center block-element">{{ 'LOGIN' | translate }}</a>
+            </div>
+        </form>
+    </div>
+</div>

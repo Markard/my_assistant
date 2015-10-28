@@ -1,0 +1,39 @@
+MyAssistant\BudgetBundle\Entity\Purchase:
+    type: entity
+    table: null
+    repositoryClass: MyAssistant\BudgetBundle\Entity\PurchaseRepository
+    manyToOne:
+        user:
+            targetEntity: MyAssistant\AuthJwtBundle\Entity\User
+            inversedBy: purchases
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        amount:
+            type: integer
+        price:
+            type: decimal
+            precision: 10
+            scale: 2
+        boughtAt:
+            type: date
+            column: bought_at
+        createdAt:
+            type: datetimetz
+            column: created_at
+        updatedAt:
+            type: datetimetz
+            column: updated_at
+    lifecycleCallbacks:
+        prePersist: [updateTimestamps, increaseUserPurchasesCounter]
+        preRemove: [decreaseUserPurchasesCounter]

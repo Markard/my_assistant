@@ -1,0 +1,35 @@
+MyAssistant\BudgetBundle\Entity\Purchase:
+    getters:
+        title:
+            - NotBlank: ~
+            - Length:
+                max: 255
+        amount:
+            - NotBlank: ~
+            - Range:
+                min: 1
+                minMessage: Amount could not be less than 1.
+                max: 9999999
+                maxMessage: Amount could not be more than 9999999.
+        price:
+            - NotBlank: ~
+            - Range:
+                min: 0
+                max: 9999999999
+                maxMessage: Amount could not be more than 9999999999.
+        boughtAt:
+            - NotBlank: ~
+MyAssistant\BudgetBundle\Entity\Income:
+    getters:
+        title:
+            - NotBlank: ~
+            - Length:
+                max: 255
+        price:
+            - NotBlank: ~
+            - Range:
+                min: 0
+                max: 9999999999
+                maxMessage: Amount could not be more than 9999999999.
+        date:
+            - NotBlank: ~

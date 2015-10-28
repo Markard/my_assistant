@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="UTF-8"/>
+        {% block title %}<title>Welcome!</title>{% endblock %}
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('static/css/bootstrap.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('static/css/bootstrap-lumen.min.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('static/css/vendor.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('static/css/app.css') }}"/>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('static/js/vendor.js') }}"></script>
+            <script src="{{ asset('static/js/app.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

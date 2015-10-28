@@ -1,0 +1,69 @@
+MyAssistant\AuthJwtBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: MyAssistant\AuthJwtBundle\Entity\UserRepository
+    oneToOne:
+        emailConfirmation:
+            targetEntity: MyAssistant\AuthJwtBundle\Entity\EmailConfirmation
+            mappedBy: user
+            cascade:
+                - persist
+                - remove
+    oneToMany:
+        incomes:
+            targetEntity: MyAssistant\BudgetBundle\Entity\Income
+            mappedBy: user
+            cascade:
+                - persist
+                - remove
+        purchases:
+            targetEntity: MyAssistant\BudgetBundle\Entity\Purchase
+            mappedBy: user
+            cascade:
+                - persist
+                - remove
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: 50
+            unique: true
+            nullable: false
+        email:
+            type: string
+            length: 50
+            unique: true
+            nullable: false
+        password:
+            type: string
+            length: 255
+            nullable: false
+        timezone:
+            type: string
+            length: 255
+            nullable: false
+        purchasesPerDay:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: 0
+        incomesPerMonth:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: 0
+        createdAt:
+            type: datetimetz
+            column: created_at
+        updatedAt:
+            type: datetimetz
+            column: updated_at
+    lifecycleCallbacks:
+        prePersist: [updateTimestamps]

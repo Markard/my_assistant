@@ -1,0 +1,47 @@
+parameters:
+    app_auth_jwt.registration.handler.class: MyAssistant\AuthJwtBundle\Handler\RegistrationHandler
+    pagination.serializer.class: MyAssistant\CoreBundle\CustomSerializer\PaginationSerializer
+    app_auth_jwt.user.class: MyAssistant\AuthJwtBundle\Entity\User
+    app_auth_jwt.registration.type.class: MyAssistant\AuthJwtBundle\Type\RegistrationType
+    security.user_checker.class: MyAssistant\AuthJwtBundle\Security\UserChecker
+
+services:
+    pagination.serializer:
+        class: %pagination.serializer.class%
+
+    app_auth_jwt.registration.type:
+        class: %app_auth_jwt.registration.type.class%
+
+    app_auth_jwt.registration.handler:
+        class: %app_auth_jwt.registration.handler.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @form.factory
+            - %app_auth_jwt.user.class%
+            - @app_auth_jwt.registration.type
+            - @knp_paginator
+            - @pagination.serializer
+            - @service_container
+
+    jms_serializer.object_constructor:
+        alias: jms_serializer.doctrine_object_constructor
+        public: false
+
+    app_auth_jwt.event.jwt_authentication_failure_listener:
+        class: MyAssistant\AuthJwtBundle\EventListener\AuthenticationListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_failure, method: onFailure }
+
+    app_auth_jwt.event.jwt_created_listener:
+        class: MyAssistant\AuthJwtBundle\EventListener\AuthenticationListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+
+    app_auth_jwt.doctrine.filter.configurator:
+        class: MyAssistant\AuthJwtBundle\EventListener\UserFilterListener
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@security.token_storage"
+            - "@annotation_reader"
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }

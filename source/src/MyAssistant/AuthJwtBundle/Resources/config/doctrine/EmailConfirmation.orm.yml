@@ -1,0 +1,31 @@
+MyAssistant\AuthJwtBundle\Entity\EmailConfirmation:
+    type: entity
+    table: null
+    repositoryClass: MyAssistant\AuthJwtBundle\Entity\EmailConfirmationRepository
+    oneToOne:
+        user:
+            targetEntity: MyAssistant\AuthJwtBundle\Entity\User
+            inversedBy: emailConfirmation
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        email:
+            type: string
+            length: 255
+            unique: true
+        confirmationCode:
+            type: string
+            length: 255
+            column: confirmation_code
+        createdAt:
+            type: datetimetz
+            column: created_at
+    lifecycleCallbacks:
+        prePersist: [updateTimestamps]

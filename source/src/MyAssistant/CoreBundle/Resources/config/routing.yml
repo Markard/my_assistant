@@ -1,0 +1,3 @@
+app_core_homepage:
+    path:     /
+    defaults: { _controller: MyAssistantCoreBundle:Default:index }

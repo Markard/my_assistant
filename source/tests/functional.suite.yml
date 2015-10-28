@@ -1,0 +1,26 @@
+class_name: FunctionalTester
+modules:
+    enabled:
+        - Asserts
+        - \Helper\Functional
+        - \Helper\CustomDb:
+            populate: false
+            cleanup: false
+            reconnect: false
+        - \Helper\MysqlDbRestore:
+            host: database
+            user: admin
+            password: ~
+            database: site_test
+            dump: tests/_data/dump.sql
+            populate: true
+            cleanup: false
+        - Doctrine2:
+            depends: Symfony2
+            cleanup: false
+        - Symfony2:
+            app_path: app/
+            environment: test
+        - REST:
+            depends: Symfony2
+            url: http://127.0.0.1/api/v1/

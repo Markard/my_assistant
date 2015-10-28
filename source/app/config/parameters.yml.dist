@@ -1,0 +1,15 @@
+parameters:
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    jwt_private_key_path: %kernel.root_dir%/config/keys/jwt/private.pem   # ssh private key path
+    jwt_public_key_path:  %kernel.root_dir%/config/keys/jwt/public.pem    # ssh public key path
+    jwt_key_pass_phrase:  ~                                      # ssh key pass phrase
+    jwt_token_ttl:        86400
+
+    mailgun_key: ~
+    mailgun_domain: ~
+
+    confirmation_code_expiration_period_in_hours: 12
+    confirmation_code_resend_timeout_in_minutes: 10
+    purchases_limit_per_day: 100
+    incomes_limit_per_month: 1000

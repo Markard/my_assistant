@@ -1,0 +1,37 @@
+app:
+    image: ubuntu:14.04
+    volumes:
+        - ./source:/var/www/
+    tty: true
+
+nginx:
+    build: dockers/nginx/dev
+    ports:
+        - 80:80
+    links:
+        - php
+    tty: true
+    volumes_from:
+        - app
+
+php:
+    build: dockers/php/dev
+    expose:
+        - 9000:9000
+    volumes_from:
+        - app
+    tty: true
+    links:
+        - database
+
+database:
+    build: dockers/mysql/dev
+    ports:
+        - 3306:3306
+    tty: true
+
+nodejs:
+    build: dockers/nodejs
+    volumes_from:
+        - app
+    tty: true

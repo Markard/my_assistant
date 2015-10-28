@@ -1,0 +1,149 @@
+<!-- Statistic widget -->
+<ma-budget-summary></ma-budget-summary>
+
+<div class="container-fluid">
+    <!-- Global Filters -->
+    <div class="row mb-30">
+        <div class="col-lg-2 col-xs-12">
+            <ma-date-picker date-format="YYYY-MM" datepicker-min-mode="'month'" datepiker-mode="'month'"
+                            ng-model="filters.date"></ma-date-picker>
+        </div>
+    </div>
+
+    <!-- Grids -->
+    <div class="row pb-75">
+        <!-- Purchases -->
+        <div class="col-lg-6 col-xs-12 pr-30">
+
+            <div class="row">
+                <!-- Manage area -->
+                <div class="col-lg-12 text-left">
+                    <a class="btn btn-primary" ng-click="openCreatePurchaseModal()">
+                        {{ 'ADD_PURCHASE' | translate }}
+                    </a>
+                </div>
+            </div>
+            <hr/>
+            <h4 class="expense-text">{{ 'EXPENSE' | translate }}:</h4>
+
+            <div ng-if="loadingPhases.purchasesLoading">
+                <div ng-if="purchases.items.length">
+                    <!-- Pagination Bottom -->
+                    <div class="row" ng-if="purchases.info.totalItems > 10">
+                        <div class="col-lg-12">
+                            <pagination total-items="purchases.info.totalItems" ng-model="purchases.info.currentPage"
+                                        rotate="true" max-size="5" ng-change="changePurchasePage()"></pagination>
+                        </div>
+                    </div>
+                    <!-- Grid -->
+                    <div class="row">
+                        <!-- Titles -->
+                        <div class="col-lg-12 data-titles">
+                            <div class="total-column {{ isAllDaysVisible ? 'opened' : 'closed' }}"
+                                 ng-click="toggleAllDaysVisibility()"></div>
+                            <div class="title-column center col-lg-8 col-xs-8">{{ 'TITLE' | translate }}</div>
+                            <div class="price-column center col-lg-2 col-xs-2">{{ 'PRICE' | translate }}</div>
+                            <div class="amount-column center col-lg-2 col-xs-2">{{ 'AMOUNT' | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Purchases -->
+                        <div class="col-lg-12 data-content ml-15 mt-20" ng-repeat="dailyCosts in purchases.items">
+                            <!-- Day summary -->
+                            <i ng-click="toggleDayVisibility(dailyCosts.day)"
+                               class="{{ visibleDays[dailyCosts.day] ? 'opened' : 'closed' }}">
+                                <div class="subtitle row mb-5">
+                                    <div class="col-lg-8 col-xs-12">
+                                        <div class="col-lg-6 col-xs-7">
+                                            {{ dailyCosts.day | baseDate }}
+                                            ({{ dailyCosts.day | dayOfWeek }})
+                                        </div>
+                                        <div class="col-lg-6 col-xs-5">
+                                            {{ 'SPENT' | translate }}: {{ dailyCosts.sum | currency:'' }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </i>
+
+                            <div class="data-row-content {{ visibleDays[dailyCosts.day] ? 'opened' : 'closed' }} mt-5 row"
+                                 ng-repeat="purchase in dailyCosts.rows" ng-click="openEditPurchaseModal(purchase.id)">
+                                <div class="closed col-lg-8 col-xs-8">{{ purchase.title }}</div>
+                                <div class="money-cell col-lg-2 col-xs-2">{{ purchase.price }}</div>
+                                <div class="center col-lg-2 col-xs-2">{{ purchase.amount }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pagination Bottom -->
+                    <div class="row" ng-if="purchases.info.totalItems > 10">
+                        <div class="col-lg-12">
+                            <pagination total-items="purchases.info.totalItems" ng-model="purchases.info.currentPage"
+                                        rotate="true" max-size="5" ng-change="changePurchasePage()"></pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="!purchases.items.length && loadingPhases.purchasesLoading">
+                <div class="col-lg-6 col-lg-offset-3 mt-100">
+                    {{ 'YOU_HAVE_NO_PURCHASES' | translate }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Incomes -->
+        <div class="col-lg-6 col-xs-12 pl-30">
+            <div class="row">
+                <!-- Manage area -->
+                <div class="col-lg-12 text-right">
+                    <a class="btn btn-primary" ng-click="openCreateIncomeModal()">
+                        {{ 'ADD_INCOME' | translate }}
+                    </a>
+                </div>
+            </div>
+            <hr/>
+            <h4 class="income-text">{{ 'INCOME' | translate }}:</h4>
+
+            <div ng-if="incomes.items.length && loadingPhases.incomeLoading">
+                <!-- Pagination Top -->
+                <div class="row" ng-if="incomes.info.totalItems > 10">
+                    <div class="col-lg-6 col-lg-offset-3 col-xs-12 nopadding">
+                        <pagination total-items="incomes.info.totalItems" ng-model="incomes.info.currentPage"
+                                    rotate="true" max-size="5" ng-change="changeIncomePage()"></pagination>
+                    </div>
+                </div>
+                <!-- Grid -->
+                <div class="row">
+                    <!-- Titles -->
+                    <div class="col-lg-12 data-titles">
+                        <div class="center col-lg-6 col-xs-6">{{ 'TITLE' | translate }}</div>
+                        <div class="center col-lg-3 col-xs-3">{{ 'PRICE' | translate }}</div>
+                        <div class="center col-lg-3 col-xs-3">{{ 'INCOME_DATE' | translate }}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Incomes -->
+                    <div class="col-lg-12 data-content mt-20">
+                        <div class="data-row-content row" ng-repeat="income in incomes.items"
+                             ng-click="openEditIncomeModal(income.id)">
+                            <div class="col-lg-6 col-xs-6">{{ income.title }}</div>
+                            <div class="money-cell col-lg-3 col-xs-3">{{ income.price }}</div>
+                            <div class="col-lg-3 col-xs-3">{{ income.date | baseDate }}</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pagination Bottom -->
+                <div class="row" ng-if="incomes.info.totalItems > 10">
+                    <div class="col-lg-6 col-lg-offset-3 col-xs-12 nopadding">
+                        <pagination total-items="incomes.info.totalItems" ng-model="incomes.info.currentPage"
+                                    rotate="true" max-size="5" ng-change="changeIncomePage()"></pagination>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" ng-if="!incomes.items.length && loadingPhases.incomeLoading">
+                <div class="col-lg-6 col-lg-offset-3 mt-100">
+                    {{ 'YOU_HAVE_NO_INCOMES' | translate }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

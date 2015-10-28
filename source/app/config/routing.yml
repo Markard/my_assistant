@@ -1,0 +1,19 @@
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+budget_core:
+    resource: "@MyAssistantCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+budget_auth_jwt:
+    resource: "@MyAssistantAuthJwtBundle/Resources/config/routing.yml"
+    prefix:   /
+
+budget_auth_jwt_api_v1:
+    resource: "@MyAssistantAuthJwtBundle/Resources/config/routing_api_v1.yml"
+    prefix:   /api/v1/
+
+budget_spending:
+    resource: "@MyAssistantBudgetBundle/Resources/config/routing.yml"
+    prefix:   /api/v1/

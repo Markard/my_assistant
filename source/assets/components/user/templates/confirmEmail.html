@@ -1,0 +1,31 @@
+<div class="row mt-30">
+    <div class="col-lg-6 col-lg-offset-3 col-xs-12" ng-if="message.value">
+        <ma-message-box ng-model="message.type">{{ message.value }}</ma-message-box>
+    </div>
+    <div class="col-lg-2 col-xs-12 col-centered">
+        <h3 class="text-center">{{ 'CONFIRM_EMAIL' | translate }}:</h3>
+
+        <form class="form-horizontal">
+            <div ma-bootstrap-validation ng-model="form.fields.confirmation_code" class="form-group">
+                <label for="input-confirmation-code" class="sr-only control-label">
+                    {{ 'CONFIRMATION_CODE' | translate }}
+                </label>
+
+                <input type="text" id="input-confirmation-code" class="form-control" name="confirmation_code"
+                       placeholder="{{ 'CONFIRMATION_CODE' | translate }}" tabindex="1"
+                       ng-model="form.fields.confirmation_code.value">
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary btn-bg" type="submit" ng-click="confirm()"
+                        tabindex="4">
+                    {{ 'CONFIRM' | translate }}
+                </button>
+                <small>
+                    <a href="#" ng-click="resendConfirmationCode()" class="text-center block-element mt-0">
+                        ({{ 'RESEND_CONFIRMATION' | translate }})
+                    </a>
+                </small>
+            </div>
+        </form>
+    </div>
+</div>

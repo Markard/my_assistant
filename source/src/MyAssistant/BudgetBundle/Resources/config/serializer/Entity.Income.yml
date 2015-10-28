@@ -1,0 +1,14 @@
+MyAssistant\BudgetBundle\Entity\Income:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        title:
+            expose: true
+            type: string
+        price:
+            expose: true
+            type: string
+        date:
+            expose: true
+            type: DateTime<'Y-m-d'>

@@ -1,0 +1,45 @@
+<form class="form-horizontal">
+    <div class="modal-header">
+        <h3 class="modal-title">{{ form.isNew ? 'CREATE_INCOME' : 'EDIT_INCOME' | translate }}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div ma-bootstrap-validation ng-model="form.fields.title" class="form-group">
+                <label for="input-title" class="col-md-3 control-label">{{ 'TITLE' | translate }}</label>
+
+                <div class="col-md-9">
+                    <input type="text" id="input-title" class="form-control" name="title"
+                           placeholder="{{ 'TITLE' | translate }}" tabindex="1"
+                           ng-model="form.fields.title.value">
+                </div>
+            </div>
+            <div ma-bootstrap-validation ng-model="form.fields.date" class="form-group">
+                <label class="col-md-3 control-label">{{ 'INCOME_DATE' | translate }}</label>
+
+                <div class="col-md-9">
+                    <ma-date-picker ng-model="form.fields.date.value"></ma-date-picker>
+                </div>
+            </div>
+            <div ma-bootstrap-validation ng-model="form.fields.price" class="form-group">
+                <label for="input-price" class="col-md-3 control-label">{{ 'PRICE' | translate }}</label>
+
+                <div class="col-md-9">
+                    <input type="text" id="input-price" class="form-control" name="price"
+                           placeholder="{{ 'PRICE' | translate }}" tabindex="1"
+                           ng-model="form.fields.price.value">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-danger btn-width-medium ml-20" tabindex="1" ng-if="!form.isNew" ng-click="destroy()">
+            {{ 'DELETE' | translate }}
+        </a>
+        <input type="submit" class="btn btn-primary btn-width-medium"
+               value="{{ form.isNew ? 'CREATE' : 'UPDATE' | translate }}"
+               tabindex="1" ng-click="save()"/>
+        <a class="btn btn-default btn-width-medium ml-20" tabindex="1" ng-click="cancel()">
+            {{ 'CANCEL' | translate }}
+        </a>
+    </div>
+</form>

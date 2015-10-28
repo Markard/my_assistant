@@ -1,0 +1,13 @@
+app_budget_api_v1_purchases:
+    type: rest
+    defaults: { _format: json }
+    resource: "MyAssistant\BudgetBundle\Controller\\PurchaseController"
+    requirements:
+      _format:  json
+
+app_budget_api_v1_incomes:
+    type: rest
+    defaults: { _format: json }
+    resource: "MyAssistant\BudgetBundle\Controller\\IncomeController"
+    requirements:
+      _format:  json

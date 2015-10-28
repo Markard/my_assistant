@@ -1,0 +1,44 @@
+parameters:
+    budget_spending.purchase.handler.class: MyAssistant\BudgetBundle\Handler\PurchaseHandler
+    budget_spending.purchase.class: MyAssistant\BudgetBundle\Entity\Purchase
+    budget_spending.purchase.type.class: MyAssistant\BudgetBundle\Type\PurchaseType
+    budget_spending.income.handler.class: MyAssistant\BudgetBundle\Handler\IncomeHandler
+    budget_spending.income.class: MyAssistant\BudgetBundle\Entity\Income
+    budget_spending.income.type.class: MyAssistant\BudgetBundle\Type\IncomeType
+    pagination.serializer.class: MyAssistant\CoreBundle\CustomSerializer\PaginationSerializer
+
+services:
+    pagination.serializer:
+        class: %pagination.serializer.class%
+
+    budget_spending.purchase.type:
+        class: %budget_spending.purchase.type.class%
+
+    budget_spending.income.type:
+        class: %budget_spending.income.type.class%
+
+    budget_spending.purchase.handler:
+        class: %budget_spending.purchase.handler.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @form.factory
+            - %budget_spending.purchase.class%
+            - @budget_spending.purchase.type
+            - @knp_paginator
+            - @pagination.serializer
+            - @service_container
+
+    budget_spending.income.handler:
+        class: %budget_spending.income.handler.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @form.factory
+            - %budget_spending.income.class%
+            - @budget_spending.income.type
+            - @knp_paginator
+            - @pagination.serializer
+            - @service_container
+
+    jms_serializer.object_constructor:
+        alias: jms_serializer.doctrine_object_constructor
+        public: false

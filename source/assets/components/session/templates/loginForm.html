@@ -1,0 +1,35 @@
+<div class="row mt-30">
+    <div class="col-lg-offset-5 col-lg-2 col-xs-12">
+        <h3 class="text-center">{{ 'ENTER' | translate }}:</h3>
+
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="input-username" class="sr-only control-label">
+                    {{ 'USERNAME' | translate }}
+                </label>
+
+                <input type="text" id="input-username" class="form-control" name="username"
+                       placeholder="{{ 'USERNAME' | translate }}" tabindex="1"
+                       ng-model="form.fields.username.value">
+            </div>
+            <div ma-bootstrap-validation ng-model="form.fields._common_field" class="form-group">
+                <label for="input-password" class="sr-only control-label">
+                    {{ 'PASSWORD' | translate }}
+                </label>
+
+                <input type="password" id="input-password" class="form-control"
+                       placeholder="{{ 'PASSWORD' | translate }}" tabindex="2"
+                       ng-model="form.fields.password.value" required>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-bg btn-primary" type="submit" ng-click="login()" tabindex="3">
+                    {{ 'LOGIN' | translate }}
+                </button>
+
+                <hr/>
+
+                <a ui-sref="registration" class="text-center block-element">{{ 'REGISTER' | translate }}</a>
+            </div>
+        </form>
+    </div>
+</div>

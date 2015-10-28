@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default navbar-fixed-bottom budget-summary">
+    <div class="container">
+        <ul class="nav navbar-nav expense">
+            <li class="pt-10 pb-10">
+                <span class="budget-summary-title mr-10 expense-text">{{ 'EXPENSE' | translate }}:</span>
+                <i>{{ totalPurchase | currency : '' : 2 }}</i>
+                ({{ 'CURRENT_MONTH' | translate }}: <i>{{ totalPurchaseForMonth | currency : '' : 2 }}</i>)
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right income">
+            <li class="pt-10 pb-10">
+                <span class="budget-summary-title mr-10 income-text">{{ 'INCOME' | translate }}:</span>
+                <i>{{ totalIncome | currency : '' : 2 }}</i>
+                ({{ 'CURRENT_MONTH' | translate }}: <i>{{ totalIncomeForMonth | currency : '' : 2 }}</i>)
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,17 @@
+MyAssistant\BudgetBundle\Entity\Purchase:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        title:
+            expose: true
+            type: string
+        amount:
+            expose: true
+            type: integer
+        price:
+            expose: true
+            type: string
+        boughtAt:
+            expose: true
+            type: DateTime<'Y-m-d'>

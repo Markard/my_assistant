@@ -1,0 +1,6 @@
+parameters:
+    fos_rest.exception_listener.class: MyAssistant\CoreBundle\EventListener\ExceptionListener
+
+services:
+    fos_rest.exception_handler:
+        class: MyAssistant\CoreBundle\Util\ExceptionWrapperHandler

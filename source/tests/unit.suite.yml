@@ -1,0 +1,8 @@
+class_name: UnitTester
+modules:
+    enabled:
+        - Asserts
+        - \Helper\Unit
+        - Symfony2:
+            app_path: 'app/'
+            environment: 'test'
