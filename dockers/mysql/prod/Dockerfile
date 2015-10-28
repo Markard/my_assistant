@@ -20,13 +20,14 @@ ADD docker_settings/mysqld_charset.cnf /etc/mysql/conf.d/mysqld_charset.cnf
 # Add MySQL scripts
 ADD docker_settings/import_sql.sh /import_sql.sh
 ADD docker_settings/run.sh /run.sh
+ADD docker_settings/startup.sql /tmp/startup.sql
 RUN chmod 755 /*.sh
 
 # Exposed ENV
 ENV MYSQL_USER **False**
 ENV MYSQL_PASS **False**
-ENV ON_CREATE_DB site
-ENV STARTUP_SQL ~
+ENV ON_CREATE_DB **False**
+ENV STARTUP_SQL /tmp/startup.sql
 
 # Replication ENV
 ENV REPLICATION_MASTER **False**

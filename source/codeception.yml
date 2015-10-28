@@ -17,5 +17,5 @@ modules:
     config:
         \Helper\CustomDb:
             dsn: 'mysql:host=database;dbname=site_test;'
-            user: 'admin'
-            password: ~
+            user: 'site_admin'
+            password: 'secretpwd'

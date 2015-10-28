@@ -157,7 +157,7 @@ preg_match('/dbname=([^;]+);/', $config['modules']['config']['\Helper\CustomDb']
 $dbname = $matches[1];
 $dbUser = $config['modules']['config']['\Helper\CustomDb']['user'];
 $dbPassword = $config['modules']['config']['\Helper\CustomDb']['password'];
-exec("mysqldump -h{$host} -u{$dbUser} {$dbname} > " . $dumpFilePath);
+exec("mysqldump -h{$host} -u{$dbUser} -p{$dbPassword} {$dbname} > " . $dumpFilePath);
 
 /*
  * ---------------------------------------------------------------------------------------------------------------------

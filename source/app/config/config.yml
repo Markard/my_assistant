@@ -55,8 +55,8 @@ doctrine:
         host:     "database"
         port:     "3306"
         dbname:   "site"
-        user:     "admin"
-        password: ""
+        user:     "site_admin"
+        password: "secretpwd"
         charset:  UTF8
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"

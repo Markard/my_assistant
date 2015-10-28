@@ -4,7 +4,7 @@ Steps for production:
     sudo mkdir /var/lib/mysql
      
 2 At the first time you have initialized mysql in this folder.
-    sudo docker run -d -v /var/lib/mysql:/var/lib/mysql tutum/mysql /bin/bash -c "/usr/bin/mysql_install_db"
+    sudo docker run -d -v /var/lib/mysql:/var/lib/mysql myassistant_database /bin/bash -c "/usr/bin/mysql_install_db"
     
 3 You have to build docker images.
     sudo docker-compose -f prod_compose.yml build
