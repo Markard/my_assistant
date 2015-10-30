@@ -16,6 +16,6 @@ extensions:
 modules:
     config:
         \Helper\CustomDb:
-            dsn: 'mysql:host=database;dbname=site_test;'
-            user: 'site_admin'
-            password: 'secretpwd'
+            dsn: 'mysql:host=database;dbname=site-test;'
+            user: 'admin'
+            password: 'secret'

@@ -10,8 +10,8 @@ modules:
         - \Helper\MysqlDbRestore:
             host: database
             user: admin
-            password: ~
-            database: site_test
+            password: secret
+            database: site-test
             dump: tests/_data/dump.sql
             populate: true
             cleanup: false

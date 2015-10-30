@@ -22,4 +22,4 @@ liip_functional_test: ~
 doctrine:
     dbal:
         driver:   pdo_mysql
-        dbname:   "site_test"
+        dbname:   "site-test"

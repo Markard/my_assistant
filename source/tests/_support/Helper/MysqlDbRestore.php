@@ -75,15 +75,17 @@ class MysqlDbRestore extends \Codeception\Module
 
     public function loadDump()
     {
-        $command = 'mysql ';
+        $command = '';
+        if ($password = $this->config['password']) {
+            $command .= "MYSQL_PWD={$password} ";
+        }
+
+        $command .= 'mysql ';
         if ($host = $this->config['host']) {
             $command .= "-h{$host} ";
         }
         if ($user = $this->config['user']) {
             $command .= "-u{$user} ";
-        }
-        if ($password = $this->config['password']) {
-            $command .= "-p{$password} ";
         }
         $command .= "{$this->config['database']} < " . Configuration::projectDir() . $this->config['dump'];
 
