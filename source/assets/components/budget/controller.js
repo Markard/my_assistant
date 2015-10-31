@@ -201,6 +201,7 @@ MaBudgetControllerModule.controller('maPurchaseController', [
             maPurchaseService
                 .destroy(attributes.id)
                 .then(function (response) {
+                    $rootScope.$broadcast('purchaseChanged');
                     growl.success(response.message);
                     maPurchaseListData.getData();
                 });
@@ -260,6 +261,7 @@ MaBudgetControllerModule.controller('maIncomeController', [
             maIncomeService
                 .destroy(attributes.id)
                 .then(function (response) {
+                    $rootScope.$broadcast('incomeChanged');
                     growl.success(response.message);
                     maIncomeListData.getData();
                 });
