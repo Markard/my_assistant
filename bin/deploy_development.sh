@@ -2,12 +2,12 @@
 
 docker-compose -f development_compose.yml build
 
-if [ ! -f /var/lib/mysql ]; then
+if [ ! -d /var/lib/mysql ]; then
     mkdir /var/lib/mysql
     docker run -d -v /var/lib/mysql:/var/lib/mysql myassistant_database /bin/bash -c "/usr/bin/mysql_install_db"
 fi
 
-if [ ! -f /var/mysql_backups ]; then
+if [ ! -d /var/mysql_backups ]; then
     mkdir /var/lib/mysql
 fi
 
