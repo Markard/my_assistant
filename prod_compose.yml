@@ -18,6 +18,8 @@ php:
     build: dockers/php/prod
     expose:
         - 9000:9000
+    environment:
+        - SYMFONY_ENV:prod
     volumes_from:
         - app
     tty: true
