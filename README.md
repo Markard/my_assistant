@@ -16,7 +16,7 @@ Steps for production:
    docker-compose -f prod_compose.yml up -d
     
 6 Update composer 
-   docker exec -d myassistant_php_1 SYMFONY_ENV=prod composer install -d /var/www --no-dev && chown -R php-fpm:php-fpm /var/www/
+   docker exec -d myassistant_php_1 composer install -d /var/www --no-dev && chown -R php-fpm:php-fpm /var/www/
    
 7 Migrate database
    docker exec -d myassistant_php_1 php /var/www/app/console doctrine:migrations:migrate --env=prod

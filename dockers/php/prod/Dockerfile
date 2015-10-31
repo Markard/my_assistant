@@ -93,4 +93,6 @@ EXPOSE 9000
 
 WORKDIR /var/www
 
+RUN apt-get install -y git
+
 CMD ["php-fpm"]
