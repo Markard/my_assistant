@@ -28,6 +28,13 @@ database:
     build: dockers/mysql/prod
     volumes:
         - /var/lib/mysql:/var/lib/mysql
+        - /var/mysql_backups:/tmp/backups
     ports:
         - 3306:3306
+    tty: true
+
+nodejs:
+    build: dockers/nodejs
+    volumes_from:
+        - app
     tty: true

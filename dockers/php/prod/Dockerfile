@@ -84,9 +84,6 @@ ADD docker_settings/php.ini /etc/php-5.6.14/php.ini
 ADD docker_settings/php-fpm.conf /etc/php-5.6.14/php-fpm.conf
 ADD docker_settings/conf.d/site.conf /etc/php-5.6.14/conf.d/site.conf
 
-ADD docker_settings/deploy.sh /usr/bin/deploy.sh
-RUN chmod +x /usr/bin/deploy.sh
-
 ENV PATH /opt/php-5.6.14/bin/:/opt/php-5.6.14/sbin/:$PATH
 
 #Install composer

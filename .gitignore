@@ -49,4 +49,5 @@ crashlytics-build.properties
 
 app/SymfonyRequirements.php
 
+source/web/static
 
