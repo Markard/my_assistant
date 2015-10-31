@@ -8,7 +8,7 @@ if [ ! -d /var/lib/mysql ]; then
 fi
 
 if [ ! -d /var/mysql_backups ]; then
-    mkdir /var/lib/mysql
+    mkdir /var/mysql_backups
 fi
 
 docker-compose -f prod_compose.yml up -d
