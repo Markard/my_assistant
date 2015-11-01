@@ -51,3 +51,4 @@ app/SymfonyRequirements.php
 
 source/web/static
 
+mysql/*

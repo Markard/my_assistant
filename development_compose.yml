@@ -27,7 +27,8 @@ php:
 database:
     build: dockers/mysql/dev
     volumes:
-        - /var/lib/mysql:/var/lib/mysql
+        - ./mysql/data:/var/lib/mysql
+        - ./mysql/backups:/tmp/backups
     ports:
         - 3306:3306
     tty: true

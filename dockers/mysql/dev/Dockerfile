@@ -25,7 +25,7 @@ ENV REPLICATION_MASTER=**False** \
     STARTUP_SQL=/tmp/startup.sql
 
 # Add VOLUMEs to allow backup of config and databases
-VOLUME  ["/etc/mysql", "/var/lib/mysql"]
+VOLUME  ["/etc/mysql", "/var/lib/mysql", "/tmp/backups"]
 
 EXPOSE 3306
 CMD ["/run.sh"]
