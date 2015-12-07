@@ -44,3 +44,6 @@ That's all. Now your webserver, database and interpreter created and ready to wo
 * *dockers* - dockers setup with server specific configurations like **php.ini** and other
 * *source* - application code
  * *assets* - frontend application, writed on AngularJs
+
+## Api documentation
+http://46.101.230.89/api/doc
