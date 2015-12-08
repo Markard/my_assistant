@@ -1,4 +1,4 @@
-This project writed with [Symfony2](https://symfony.com/) and [AnjularJs](https://angularjs.org/). Currrently used for my own needs. Any help or suggestions would be greatly appreciated!
+This project writed with [Symfony2](https://symfony.com/) and [AnjularJs](https://angularjs.org/). Currently used for my own needs. Any help or suggestions would be greatly appreciated!
 Currently the project separated on REST Api backend and frontend wrote on AngularJS.
 
 ## What was used:
