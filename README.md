@@ -40,7 +40,7 @@ There are two scripts, for development and production environment.
 #### Hard way
 Just do the steps in *bin/deploy_development.sh* or *bin/deploy_production.sh*
 
-That's all. Now your webserver, database and interpreter created and ready to work. You can access the site on http://127.0.0.1
+That's all. Now your webserver, database and interpreter created and ready to work. You can access the site by http://127.0.0.1
 
 ## Structure
 * *bin* - helpful scripts for such work as db backup, db restore, gulp, gulp watch.
