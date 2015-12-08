@@ -1,5 +1,8 @@
 This project writed with [Symfony2](https://symfony.com/) and [AnjularJs](https://angularjs.org/). Currently used for my own needs. Any help or suggestions would be greatly appreciated!
-Currently the project separated on REST Api backend and frontend wrote on AngularJS.
+Currently the project separated on REST Api backend (Symfony2) and frontend (AngularJS).
+Functionality:
+* Authentication based on [Json Web Token](http://jwt.io/)
+* CRUD for incomes and expenses
 
 ## What was used:
 * **For development**
