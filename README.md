@@ -17,10 +17,15 @@ Functionality:
 
 ## Installation
 ### Requirements:
-A project already contains docker settings so you only need any Linux distribution and docker. Currently docker settings was tested on Ubuntu >= 14.04
-So you need:
 * docker (https://docs.docker.com/engine/installation/)
 * docker-compose (https://docs.docker.com/compose/)
+* **Keys** for jwt authentication. You should keep them in *source/app/config/keys/jwt/* folder:
+```bash
+cd source/app/config/keys/jwt/
+openssl genrsa -out private.pem -aes256 4096
+openssl rsa -pubout -in private.pem -out public.pem
+```
+* **Api key** and **Domain** from [mailgun](http://www.mailgun.com/) service.
 
 ### Quick start
 Clone repository:
@@ -33,14 +38,18 @@ Now you could use easy way and hard way:
 ```bash
 $ bin/deploy_development.sh
 ```
-It creates folder *mysql/data* in your repository folder. Initialized mysql data. Install dockers and setup your application in dockers.
+It creates folder *mysql/data* in your repository folder, initializes mysql data, installs dockers and setups your 
+application in dockers.
 
 There are two scripts, for development and production environment.
+
+At first execution you'll be asked for
 
 #### Hard way
 Just do the steps in *bin/deploy_development.sh* or *bin/deploy_production.sh*
 
-That's all. Now your webserver, database and interpreter created and ready to work. You can access the site by http://127.0.0.1
+That's all. Now your server, database and php interpreter created and ready to work. 
+You can access them through http://127.0.0.1
 
 ## Structure
 * *bin* - helpful scripts for such work as db backup, db restore, gulp, gulp watch.
@@ -49,4 +58,4 @@ That's all. Now your webserver, database and interpreter created and ready to wo
  * *assets* - frontend application, writed on AngularJs
 
 ## Api documentation
-http://46.101.230.89/api/doc
+http://127.0.0.1/api/doc

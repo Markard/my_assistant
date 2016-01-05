@@ -108,3 +108,4 @@ vendor/
 # composer.lock
 
 tests/_output/*
+web/static/*

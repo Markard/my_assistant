@@ -17,7 +17,7 @@ nginx:
 php:
     build: dockers/php/dev
     expose:
-        - 9000:9000
+        - 9000
     volumes_from:
         - app
     tty: true

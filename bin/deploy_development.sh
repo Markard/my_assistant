@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Prepare folders for mysql data and backups on host
